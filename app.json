@@ -1,0 +1,1 @@
+{"name":"Assignment 1: Part 1 - Very Best","repository":"https://github.com/jsmx2025/assignment_1_part_1_very_best","env":{"CLOUDINARY_CLOUD_NAME":{"required":true},"CLOUDINARY_API_KEY":{"required":true},"CLOUDINARY_API_SECRET":{"required":true},"ROLLBAR_ACCESS_TOKEN":{"required":true}}}
