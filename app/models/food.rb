@@ -8,6 +8,10 @@ class Food < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :venue,
+             :through => :bookmarks,
+             :source => :venue
+
   # Validations
 
 end
