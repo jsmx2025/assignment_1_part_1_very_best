@@ -1,6 +1,7 @@
 class NeighborhoodsController < ApplicationController
   def index
-    @neighborhoods = Neighborhood.page(params[:page]).per(10)
+    @q = Neighborhood.ransack(params[:q])
+    @neighborhoods = @q.result(:distinct => true).includes(:venues).page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@neighborhoods.where.not(:location_latitude => nil)) do |neighborhood, marker|
       marker.lat neighborhood.location_latitude
       marker.lng neighborhood.location_longitude
