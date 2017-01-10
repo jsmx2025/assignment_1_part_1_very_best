@@ -25,11 +25,9 @@ class Venue < ApplicationRecord
   has_many   :bookmarks,
              :dependent => :nullify
 
-  # Indirect associations
+  belongs_to :food
 
-  has_many   :foods,
-             :through => :bookmarks,
-             :source => :food
+  # Indirect associations
 
   # Validations
 

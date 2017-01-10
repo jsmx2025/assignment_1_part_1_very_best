@@ -54,13 +54,53 @@
       </script>
 
         <div class="form-group">
-      <%= f.label :neighborhood_name_cont, "Neighborhood name contains" %>
-      <%= f.text_field :neighborhood_name_cont, :class => "form-control", :placeholder => "Neighborhood name contains" %>
+      <%= f.label :food_dish_cont, "Food dish contains" %>
+      <%= f.text_field :food_dish_cont, :class => "form-control", :placeholder => "Food dish contains" %>
     </div>
 
 <div class="form-group">
-      <%= f.label :foods_dish_cont, "Food dish contains" %>
-      <%= f.text_field :foods_dish_cont, :class => "form-control", :placeholder => "Food dish contains" %>
+          <%= f.label :created_at, "Bookmark Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='bookmarksgteqcreated_atPicker'>
+                  <%= f.text_field :bookmarks_created_at_gteq, :class => "form-control", :placeholder => "Bookmark Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='bookmarkslteqcreated_atPicker'>
+                  <%= f.text_field :bookmarks_created_at_lteq, :class => "form-control", :placeholder => "Bookmark Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#bookmarksgteqcreated_atPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#bookmarkslteqcreated_atPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#bookmarksgteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#bookmarkslteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#bookmarkslteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#bookmarksgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+<div class="form-group">
+      <%= f.label :neighborhood_name_cont, "Neighborhood name contains" %>
+      <%= f.text_field :neighborhood_name_cont, :class => "form-control", :placeholder => "Neighborhood name contains" %>
     </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
@@ -89,6 +129,7 @@
         <th>Name</th>
         <th>Address</th>
         <th>Neighborhood</th>
+        <th>Food</th>
         <th>Actions</th>
       </tr>
 
@@ -100,6 +141,13 @@
           <% if venue.neighborhood.present? %>
             <a href="/neighborhoods/<%= venue.neighborhood.id %>">
               <%= venue.neighborhood.name %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if venue.food.present? %>
+            <a href="/foods/<%= venue.food.id %>">
+              <%= venue.food.dish %>
             </a>
           <% end %>
         </td>

@@ -24,6 +24,15 @@
         <% end %>
       </dd>
 
+      <dt>Food</dt>
+      <dd>
+        <% if @venue.food.present? %>
+          <a href="/foods/<%= @venue.food_id %>">
+            <%= @venue.food.dish %>
+          </a>
+        <% end %>
+      </dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -52,7 +61,7 @@
       <% @venue.bookmarks.each do |bookmark| %>
         <li class="list-group-item">
           <a href="/bookmarks/<%= bookmark.id %>">
-            <%= bookmark.food_id %>
+            <%= bookmark.created_at %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/bookmarks/<%= bookmark.id %>" class="btn btn-primary">
@@ -76,15 +85,6 @@
       <!-- Label and input for user_id -->
       <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
-      <!-- Label and input for food_id -->
-      <div class="form-group">
-        <label for="food_id" class="control-label">
-          Food
-        </label>
-
-        <%= select_tag(:food_id, options_from_collection_for_select(Food.all, :id, :dish), :class => "form-control") %>
-      </div>
-
       <!-- Label and input for venue_id -->
       <input type="hidden" name="venue_id" value="<%= @venue.id %>">
 
@@ -93,37 +93,6 @@
       </button>
     </form>
       </li>
-    </ul>
-  </div>
-</div>
-
-<!-- A Venue has many foods -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Foods
-      </li>
-
-      <% @venue.foods.each do |food| %>
-        <li class="list-group-item">
-          <a href="/foods/<%= food.id %>">
-            <%= food.dish %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/foods/<%= food.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/foods/<%= food.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_food/<%= food.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
     </ul>
   </div>
 </div>

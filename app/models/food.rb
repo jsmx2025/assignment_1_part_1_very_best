@@ -3,14 +3,10 @@ class Food < ApplicationRecord
 
   belongs_to :cuisine
 
-  has_many   :bookmarks,
-             :dependent => :nullify
+  has_one    :venue,
+             :dependent => :destroy
 
   # Indirect associations
-
-  has_one    :venue,
-             :through => :bookmarks,
-             :source => :venue
 
   # Validations
 

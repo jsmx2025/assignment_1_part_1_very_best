@@ -3,8 +3,6 @@ class Bookmark < ApplicationRecord
 
   belongs_to :venue
 
-  belongs_to :food
-
   belongs_to :user
 
   # Indirect associations

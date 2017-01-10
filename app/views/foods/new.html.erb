@@ -36,15 +36,6 @@
         <%= select_tag(:cuisine_id, options_from_collection_for_select(Cuisine.all, :id, :name, @food.cuisine_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for venue_id -->
-      <div class="form-group">
-        <label for="venue_id" class="control-label">
-          Venue
-        </label>
-
-        <input type="text" id="venue_id" name="venue_id" placeholder="Venue" class="form-control" value="<%= @food.venue_id %>">
-      </div>
-
       <button class="btn btn-success">
         Create Food
       </button>
