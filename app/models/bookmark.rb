@@ -1,11 +1,11 @@
 class Bookmark < ApplicationRecord
   # Direct associations
 
-  belongs_to :venue
+  has_many   :venues,
+             :dependent => :destroy
 
-  belongs_to :food
-
-  belongs_to :user
+  has_one    :userprofile,
+             :dependent => :destroy
 
   # Indirect associations
 

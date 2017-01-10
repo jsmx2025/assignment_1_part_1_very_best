@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @userprofile.errors.any? %>
+  <% @userprofile.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Userprofile #<%= @userprofile.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_userprofile/<%= @userprofile.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for bookmark_id -->
+      <div class="form-group">
+        <label for="bookmark_id" class="control-label">
+          Bookmark
+        </label>
+
+        <%= select_tag(:bookmark_id, options_from_collection_for_select(Bookmark.all, :id, :created_at, @userprofile.bookmark_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @userprofile.user_id), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Userprofile
+      </button>
+      or
+      <a href="/userprofiles/<%= @userprofile.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

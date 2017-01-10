@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Direct associations
 
-  has_one    :bookmark,
+  has_one    :userprofile,
              :dependent => :destroy
 
   # Indirect associations

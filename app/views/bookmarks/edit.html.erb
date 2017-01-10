@@ -18,25 +18,13 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      
-      
-
-      <!-- Label and input for food_id -->
+      <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="food_id" class="control-label">
-          Food
+        <label for="user_id" class="control-label">
+          User
         </label>
 
-        <%= select_tag(:food_id, options_from_collection_for_select(Food.all, :id, :dish, @bookmark.food_id), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for venue_id -->
-      <div class="form-group">
-        <label for="venue_id" class="control-label">
-          Venue
-        </label>
-
-        <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @bookmark.venue_id), :class => "form-control") %>
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @bookmark.user_id %>">
       </div>
 
       <button class="btn btn-warning">
