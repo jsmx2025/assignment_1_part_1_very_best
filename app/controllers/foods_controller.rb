@@ -1,13 +1,12 @@
 class FoodsController < ApplicationController
   def index
     @q = Food.ransack(params[:q])
-    @foods = @q.result(:distinct => true).includes(:bookmarks, :cuisine, :venue).page(params[:page]).per(10)
+    @foods = @q.result(:distinct => true).includes(:venue, :cuisine).page(params[:page]).per(10)
 
     render("foods/index.html.erb")
   end
 
   def show
-    @bookmark = Bookmark.new
     @food = Food.find(params[:id])
 
     render("foods/show.html.erb")

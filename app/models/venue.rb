@@ -22,14 +22,12 @@ class Venue < ApplicationRecord
 
   belongs_to :neighborhood
 
-  has_many   :bookmarks,
-             :dependent => :nullify
-
-  # Indirect associations
+  belongs_to :bookmark
 
   has_many   :foods,
-             :through => :bookmarks,
-             :source => :food
+             :dependent => :destroy
+
+  # Indirect associations
 
   # Validations
 

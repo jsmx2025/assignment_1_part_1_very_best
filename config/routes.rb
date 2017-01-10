@@ -2,6 +2,23 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root :to => "foods#index"
+  # Routes for the Userprofile resource:
+  # CREATE
+  get "/userprofiles/new", :controller => "userprofiles", :action => "new"
+  post "/create_userprofile", :controller => "userprofiles", :action => "create"
+
+  # READ
+  get "/userprofiles", :controller => "userprofiles", :action => "index"
+  get "/userprofiles/:id", :controller => "userprofiles", :action => "show"
+
+  # UPDATE
+  get "/userprofiles/:id/edit", :controller => "userprofiles", :action => "edit"
+  post "/update_userprofile/:id", :controller => "userprofiles", :action => "update"
+
+  # DELETE
+  get "/delete_userprofile/:id", :controller => "userprofiles", :action => "destroy"
+  #------------------------------
+
   # Routes for the Neighborhood resource:
   # CREATE
   get "/neighborhoods/new", :controller => "neighborhoods", :action => "new"
