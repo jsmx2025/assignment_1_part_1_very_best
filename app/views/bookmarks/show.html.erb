@@ -14,15 +14,6 @@
         <% end %>
       </dd>
 
-      <dt>Food</dt>
-      <dd>
-        <% if @bookmark.food.present? %>
-          <a href="/foods/<%= @bookmark.food_id %>">
-            <%= @bookmark.food.dish %>
-          </a>
-        <% end %>
-      </dd>
-
       <dt>Venue</dt>
       <dd>
         <% if @bookmark.venue.present? %>

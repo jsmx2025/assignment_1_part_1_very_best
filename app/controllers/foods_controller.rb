@@ -1,13 +1,12 @@
 class FoodsController < ApplicationController
   def index
     @q = Food.ransack(params[:q])
-    @foods = @q.result(:distinct => true).includes(:bookmarks, :cuisine, :venue).page(params[:page]).per(10)
+    @foods = @q.result(:distinct => true).includes(:venue, :cuisine).page(params[:page]).per(10)
 
     render("foods/index.html.erb")
   end
 
   def show
-    @bookmark = Bookmark.new
     @food = Food.find(params[:id])
 
     render("foods/show.html.erb")
@@ -24,7 +23,6 @@ class FoodsController < ApplicationController
 
     @food.dish = params[:dish]
     @food.cuisine_id = params[:cuisine_id]
-    @food.venue_id = params[:venue_id]
 
     save_status = @food.save
 
@@ -53,7 +51,6 @@ class FoodsController < ApplicationController
 
     @food.dish = params[:dish]
     @food.cuisine_id = params[:cuisine_id]
-    @food.venue_id = params[:venue_id]
 
     save_status = @food.save
 

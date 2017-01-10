@@ -54,11 +54,6 @@
     </div>
 
 <div class="form-group">
-      <%= f.label :food_dish_cont, "Food dish contains" %>
-      <%= f.text_field :food_dish_cont, :class => "form-control", :placeholder => "Food dish contains" %>
-    </div>
-
-<div class="form-group">
       <%= f.label :venue_name_cont, "Venue name contains" %>
       <%= f.text_field :venue_name_cont, :class => "form-control", :placeholder => "Venue name contains" %>
     </div>
@@ -78,7 +73,6 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>User</th>
-        <th>Food</th>
         <th>Venue</th>
         <th>Actions</th>
       </tr>
@@ -89,13 +83,6 @@
           <% if bookmark.user.present? %>
             <a href="/users/<%= bookmark.user.id %>">
               <%= bookmark.user.email %>
-            </a>
-          <% end %>
-        </td>
-        <td>
-          <% if bookmark.food.present? %>
-            <a href="/foods/<%= bookmark.food.id %>">
-              <%= bookmark.food.dish %>
             </a>
           <% end %>
         </td>

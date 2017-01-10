@@ -21,15 +21,6 @@
       <!-- Label and input for user_id -->
       <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
-      <!-- Label and input for food_id -->
-      <div class="form-group">
-        <label for="food_id" class="control-label">
-          Food
-        </label>
-
-        <%= select_tag(:food_id, options_from_collection_for_select(Food.all, :id, :dish, @bookmark.food_id), :class => "form-control") %>
-      </div>
-
       <!-- Label and input for venue_id -->
       <div class="form-group">
         <label for="venue_id" class="control-label">

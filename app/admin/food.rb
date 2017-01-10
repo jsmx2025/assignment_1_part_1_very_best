@@ -1,6 +1,6 @@
 ActiveAdmin.register Food do
 
- permit_params :dish, :cuisine_id, :venue_id
+ permit_params :dish, :cuisine_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

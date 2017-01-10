@@ -45,6 +45,15 @@
         <%= select_tag(:neighborhood_id, options_from_collection_for_select(Neighborhood.all, :id, :name, @venue.neighborhood_id), :class => "form-control") %>
       </div>
 
+      <!-- Label and input for food_id -->
+      <div class="form-group">
+        <label for="food_id" class="control-label">
+          Food
+        </label>
+
+        <%= select_tag(:food_id, options_from_collection_for_select(Food.all, :id, :dish, @venue.food_id), :class => "form-control") %>
+      </div>
+
       <button class="btn btn-success">
         Create Venue
       </button>
