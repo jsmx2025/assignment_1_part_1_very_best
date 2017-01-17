@@ -1,6 +1,6 @@
 <!-- Validation failure messages -->
-<% if @bookmark.errors.any? %>
-  <% @bookmark.errors.full_messages.each do |message| %>
+<% if @userprofile.errors.any? %>
+  <% @userprofile.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= message %>
@@ -9,14 +9,23 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Bookmark</h3>
+  <h3>Add Userprofile</h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/create_bookmark" method="post">
+    <form action="/create_userprofile" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for bookmark_id -->
+      <div class="form-group">
+        <label for="bookmark_id" class="control-label">
+          Bookmark
+        </label>
+
+        <%= select_tag(:bookmark_id, options_from_collection_for_select(Bookmark.all, :id, :created_at, @userprofile.bookmark_id), :class => "form-control") %>
+      </div>
 
       <!-- Label and input for user_id -->
       <div class="form-group">
@@ -24,14 +33,14 @@
           User
         </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @bookmark.user_id %>">
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @userprofile.user_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
-        Create Bookmark
+        Create Userprofile
       </button>
       or
-      <a href="/bookmarks">Cancel</a>
+      <a href="/userprofiles">Cancel</a>
     </form>
   </div>
 </div>
